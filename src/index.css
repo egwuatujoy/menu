@@ -5,5 +5,68 @@
 }
 
 body {
-  font-family: "Poppins", serif;
+  /* font-family: "Poppins", serif; */
+  font-family: "Lilita One", serif;
+  color: white;
+  width: 100%;
+}
+
+.nav {
+  background-color: rgba(234, 202, 142, 0.882);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  /* width: 100%; */
+}
+
+.nav button {
+padding: 5px 20px;
+}
+
+button {
+  background-color: #ffffff;
+  color: #d28b06;
+  font-weight: 500;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lilita One", serif;
+  gap: 10px;
+  background-color: rgb(252, 229, 200);
+  padding: 20px 30px;
+  width: 100%;
+}
+
+.topic {
+  width: 60%;
+}
+.image {
+  width: 40%;
+}
+
+.smoothie-image {
+  max-width: 100%;
+}
+.home-page h1 {
+  line-height: 40px;
+  font-size: 30px;
+  font-style: italic;
+}
+.home-page h1 span {
+  background-color: pink;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }

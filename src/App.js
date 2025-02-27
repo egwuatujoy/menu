@@ -1,9 +1,11 @@
 import React from "react";
-
+import Nav from "./components/Nav";
+import Homepage from "./components/Homepage";
 const App = () => {
   return (
     <div>
-      <h1>h1</h1>
+      <Nav />
+      <Homepage />
     </div>
   );
 };
