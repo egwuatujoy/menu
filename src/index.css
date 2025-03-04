@@ -172,7 +172,22 @@ button {
   border: 3px solid rgb(247, 227, 202);
 }
 
+.cart-button {
+  padding: 8px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(252, 229, 200);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+}
 
-.cart-item {
+.cart-button button {
+ background: none;
+ font-size: 20px;
+}
+
+.cart-div {
   margin-bottom: 20px;
 }
