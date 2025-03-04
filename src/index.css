@@ -109,7 +109,7 @@ button {
   grid-template-columns: repeat(2, 1fr);
   place-items: center;
   gap: 30px;
-}
+}b   b               
 
 .menu button {
   padding: 8px 20px;
