@@ -109,20 +109,22 @@ button {
   grid-template-columns: repeat(2, 1fr);
   place-items: center;
   gap: 30px;
-}b   b               
-
-.menu button {
-  padding: 8px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
 }
+
 .menu-button {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.menu-button button {
+  padding: 8px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
 .menu-name {
   display: flex;
   justify-content: space-between;
