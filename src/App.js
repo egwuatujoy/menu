@@ -10,12 +10,19 @@ import smoothieMenu from "./data/Juice";
 const App = () => {
   const [menus, setMenus] = useState(smoothieMenu);
 
-  const [selected, setSelected] = useState(null);
-
   const [open, setOpen] = useState(false);
 
+  const [cartItems, setCartItems] = useState([]);
+
   const handleClick = (menu) => {
-    setSelected((selected) => (selected?.name === menu.name ? null : menu));
+    setCartItems((prevItems) => {
+      const isExist = prevItems.some((item) => item.name === menu.name);
+      if (isExist) {
+        return prevItems;
+      }
+      return [...prevItems, menu];
+    });
+    setOpen(true);
   };
 
   const handleNav = () => {
@@ -26,7 +33,7 @@ const App = () => {
       <Nav handleNav={handleNav} />
       <Homepage />
       <Menus menus={menus} handleClick={handleClick} />
-      {open && <Cart />}
+      <Cart open={open} cartItems={cartItems} />
     </div>
   );
 };

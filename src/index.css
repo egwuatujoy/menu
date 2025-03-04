@@ -88,7 +88,7 @@ button {
 }
 
 .menus {
-  background-color: rgb(120, 107, 92);
+  color: #d28b06;
   padding: 40px;
   position: relative;
 }
@@ -103,6 +103,7 @@ button {
   width: 100%;
   border-radius: 10%;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border: 3px solid rgb(247, 227, 202);
 }
 
 .menu-grid {
@@ -124,6 +125,7 @@ button {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  background-color: rgb(252, 229, 200);
 }
 
 .menu-name {
@@ -142,17 +144,35 @@ button {
 }
 
 .cart {
-  color: yellow;
   position: absolute;
-  margin-top: 80px;
   top: 0;
-  right: 0;
-  background-color: white;
+  margin-top: 75px;
+  right: -50%;
   width: 50%;
+  background-color: white;
+  color: #d28b06;
   padding: 20px;
-  height: 100vh;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-in-out;
+  border: 3px solid rgb(247, 227, 202);
 }
 
+.cart.show {
+  transform: translateX(-100%);
+}
 .cart h1 {
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.cart img {
+  width: 50%;
+  border-radius: 10%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border: 3px solid rgb(247, 227, 202);
+}
+
+
+.cart-item {
+  margin-bottom: 20px;
 }

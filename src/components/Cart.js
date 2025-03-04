@@ -1,9 +1,21 @@
 import React from "react";
 
-const Cart = () => {
+const Cart = ({ open, cartItems }) => {
   return (
-    <div className="cart">
+    <div className={`cart ${open ? "show" : " "}`}>
       <h1>Cart</h1>
+      {cartItems.length > 0 ? (
+        cartItems.map((item, index) => (
+          <div key={index} className="cart-item">
+            <img src={item.image} alt={item.name} />
+            <h2>{item.name}</h2>
+            <p>{item.timeToMake} mins</p>
+            <h3>${item.price}</h3>
+          </div>
+        ))
+      ) : (
+        <p>No items in the cart</p>
+      )}
     </div>
   );
 };
