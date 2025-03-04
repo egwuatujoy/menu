@@ -1,11 +1,11 @@
 import React from "react";
 import { ShoppingCart } from "lucide-react";
 
-const Nav = () => {
+const Nav = ({ handleNav }) => {
   return (
     <div className="nav">
       <h1>menu</h1>
-      <button>
+      <button onClick={handleNav}>
         <ShoppingCart />
       </button>
     </div>

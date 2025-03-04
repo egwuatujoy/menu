@@ -1,7 +1,7 @@
 import React from "react";
 import { ShoppingCart } from "lucide-react";
 
-const Menu = ({ menu }) => {
+const Menu = ({ menu, handleClick }) => {
   return (
     <div className="menu">
       <img src={menu.image} alt="menu-image" />
@@ -16,7 +16,7 @@ const Menu = ({ menu }) => {
       </div>
 
       <div className="menu-button">
-        <button>
+        <button onClick={() => handleClick(menu)}>
           Order now
           <span>
             <ShoppingCart />

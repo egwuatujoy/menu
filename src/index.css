@@ -90,6 +90,7 @@ button {
 .menus {
   background-color: rgb(120, 107, 92);
   padding: 40px;
+  position: relative;
 }
 .menus h1 {
   color: rgb(255, 255, 255);
@@ -138,4 +139,20 @@ button {
 .menu-pricing {
   padding: 10px;
   line-height: 27px;
+}
+
+.cart {
+  color: yellow;
+  position: absolute;
+  margin-top: 80px;
+  top: 0;
+  right: 0;
+  background-color: white;
+  width: 50%;
+  padding: 20px;
+  height: 100vh;
+}
+
+.cart h1 {
+  text-align: center;
 }
