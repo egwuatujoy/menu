@@ -181,15 +181,26 @@ button {
   border-radius: 10px;
   color: #fff;
   font-size: 20px;
-    margin-bottom: 20px;
-
+  margin-bottom: 20px;
 }
 
 .cart-button button {
- background: none;
- font-size: 20px;
+  background: none;
+  font-size: 20px;
 }
 
 .cart-div {
   margin-bottom: 20px;
+}
+
+.final {
+  background-color: #fff;
+  border: 3px solid rgb(247, 227, 202);
+  color: #d28b06;
+  position: absolute;
+  top: 36%;
+  margin-top: 75px;
+  right: 15%;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
 }

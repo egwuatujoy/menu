@@ -6,6 +6,7 @@ import Cart from "./components/Cart";
 
 // data
 import smoothieMenu from "./data/Juice";
+import FinalOrder from "./components/FinalOrder";
 
 const App = () => {
   const [menus, setMenus] = useState(smoothieMenu);
@@ -14,7 +15,16 @@ const App = () => {
 
   const [cartItems, setCartItems] = useState([]);
 
+  const [final, setFinal] = useState(false);
+
+  const [openCart, setOpenCart] = useState(false);
+  function getOrder() {
+    setFinal(!final);
+  }
+
   const handleClick = (menu) => {
+    setOpenCart(!openCart);
+
     setCartItems((prevItems) => {
       const isExist = prevItems.some((item) => item.name === menu.name);
       if (isExist) {
@@ -33,7 +43,15 @@ const App = () => {
       <Nav handleNav={handleNav} />
       <Homepage />
       <Menus menus={menus} handleClick={handleClick} />
-      <Cart open={open} cartItems={cartItems} />
+      <Cart
+        open={open}
+        cartItems={cartItems}
+        setOpenCart={setOpenCart}
+        openCart={openCart}
+        setFinal={setFinal}
+        openCart={openCart}
+      />
+      {final && <FinalOrder />}
     </div>
   );
 };
