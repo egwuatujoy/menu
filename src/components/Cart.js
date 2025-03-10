@@ -1,6 +1,17 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { ShoppingCart } from "lucide-react";
 const Cart = ({ open, cartItems }) => {
+  const [count, setCount] = useState(0);
+
+  if (count < 0) {
+    setCount(0);
+    cartItems.length = 0;
+  }
+
+  const handleOrder = () => {
+    console.log("order placed");
+  };
+
   return (
     <div className={`cart ${open ? "show" : " "}`}>
       <h1>Cart</h1>
@@ -15,9 +26,18 @@ const Cart = ({ open, cartItems }) => {
             </div>
 
             <div className="cart-button">
-              <button>+</button>
-              <span>0</span>
-              <button>-</button>
+              <button onClick={() => setCount((count) => count + 1)}>+</button>
+              <span>{count}</span>
+              <button onClick={() => setCount((count) => count - 1)}>-</button>
+            </div>
+
+            <div className="menu-button">
+              <button onClick={handleOrder}>
+                Order now
+                <span>
+                  <ShoppingCart />
+                </span>
+              </button>
             </div>
           </div>
         ))
