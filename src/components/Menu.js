@@ -11,7 +11,6 @@ const Menu = ({ menu, handleClick }) => {
           <h2>{menu.name}</h2>
           <p>{menu.timeToMake} mins</p>
         </div>
-
         <h3>${menu.price}</h3>
       </div>
 

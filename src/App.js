@@ -11,24 +11,33 @@ import FinalOrder from "./components/FinalOrder";
 const App = () => {
   const [menus, setMenus] = useState(smoothieMenu);
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState({});
-  const [final, setFinal] = useState(false);
+  const [selected, setSelected] = useState(null);
   const [openCart, setOpenCart] = useState(false);
   const [order, setOrder] = useState([]);
-  const [finalOrder, setfinalOrder] = useState([]);
+  const [items, setItems] = useState([]);
+  const [final, setFinal] = useState(false);
 
   const handleClick = (menu) => {
     setOpenCart(true);
+    setSelected(null);
     setFinal(false);
-    setSelected((selected) => (selected.name === menu.name ? {} : menu));
+    setSelected((selected) =>
+      selected && selected.name === menu.name ? null : menu
+    );
   };
 
   const handleNav = () => {
     setOpen(!open);
+    setFinal(true)
   };
 
-  const addFinal = (order) => {
-    console.log(order);
+  const handleClose = () => {
+    setSelected(null);
+    setOpenCart(false);
+  };
+
+  const addCarts = (item) => {
+    setItems((items) => [...items, item]);
   };
 
   return (
@@ -41,13 +50,15 @@ const App = () => {
           selected={selected}
           openCart={openCart}
           setOpenCart={setOpenCart}
-          setFinal={setFinal}
           setOrder={setOrder}
-          addFinal={addFinal}
+          handleClose={handleClose}
+          addCarts={addCarts}
+          items={items}
+          setFinal={setFinal}
         />
       )}
 
-      {final && <FinalOrder />}
+      {final && <FinalOrder items={items} />}
     </div>
   );
 };

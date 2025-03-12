@@ -1,72 +1,87 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ShoppingCart } from "lucide-react";
-const Cart = ({
-  open,
-  selected,
-  setFinal,
-  setOpenCart,
-  openCart,
-  addFinal,
-}) => {
-  const [count, setCount] = useState(0);
-  if (count < 0) {
-    setCount(0);
-    selected.length = 0;
-  }
-  const { name, price, timeToMake, ingredients, image } = selected;
 
-  const handleOrder = () => {
-    const order = {
+const Cart = ({
+  selected,
+  handleClose,
+  addCarts,
+  items,
+  setOpenCart,
+  setFinal,
+}) => {
+  console.log(selected);
+  const isAdded = items.map((item) => item.name).includes(selected.name);
+  // console.log(isAdded);
+  const [received, setReceived] = useState({});
+  const [count, setCount] = useState(0);
+
+  useEffect(
+    function () {
+      function getOrder() {
+        setReceived(selected);
+      }
+      getOrder();
+    },
+    [selected]
+  );
+
+  const { name, price, timeToMake, ingredients, image } = received;
+
+  const handleSelected = () => {
+    setOpenCart(false);
+    const newCarts = {
       name,
       price: price * count,
+      image,
+      count,
     };
-
-    addFinal(order);
-    setOpenCart(false);
+    addCarts(newCarts);
     setFinal(true);
   };
 
   return (
-    <>
-      {openCart && (
-        <div className={`cart ${open ? "show" : " "}`}>
-          <h1>Cart</h1>
-          {selected ? (
-            <>
-              <div className="cart-div">
-                <div className="cart-item">
-                  <img src={image} alt="fruit" />
-                  <h2>{name}</h2>
-                  <p>{timeToMake} mins</p>
-                  <h3>${price}</h3>
-                </div>
+    <div className="cart">
+      <button onClick={handleClose}>&larr;</button>
 
-                <div className="cart-button">
-                  <button onClick={() => setCount((count) => count + 1)}>
-                    +
-                  </button>
-                  <span>{count}</span>
-                  <button onClick={() => setCount((count) => count - 1)}>
-                    -
-                  </button>
-                </div>
-              </div>
-            </>
-          ) : (
-            <p>No items in the cart</p>
-          )}
+      <h1>Cart</h1>
 
-          <div className="menu-button">
-            <button onClick={handleOrder}>
-              Order now
-              <span>
-                <ShoppingCart />
-              </span>
-            </button>
+      <div className="cart-div">
+        <img src={image} alt="fruit" />
+
+        <div className="cart-prices">
+          <div>
+            <h2>{name}</h2>
+            <div className="ingredients">
+              {ingredients?.map((ingre) => (
+                <p>{ingre}</p>
+              ))}
+            </div>
+            <p>{timeToMake} mins</p>
           </div>
+
+          <h3>${price}</h3>
         </div>
-      )}
-    </>
+      </div>
+
+      <div className="cart-button">
+        <button onClick={() => setCount((count) => count + 1)}>+</button>
+        <span>{count}</span>
+        <button onClick={() => setCount((count) => count - 1)}>-</button>
+      </div>
+
+      <div className="menu-button">
+        {!isAdded ? (
+          <button onClick={handleSelected}>
+            Place Order
+            <span>
+              <ShoppingCart />
+            </span>
+          </button>
+        ) : (
+          <h1>Item already added</h1>
+        )}
+      </div>
+    </div>
   );
 };
 
