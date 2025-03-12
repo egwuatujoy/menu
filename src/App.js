@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Homepage from "./components/Homepage";
 import Menus from "./components/Menus";
 import Cart from "./components/Cart";
+import { ToastContainer, toast } from "react-toastify";
 
 // data
 import smoothieMenu from "./data/Juice";
@@ -28,7 +29,9 @@ const App = () => {
 
   const handleNav = () => {
     setOpen(!open);
-    setFinal(true)
+    if (items.length > 0) {
+      setFinal(!final);
+    }
   };
 
   const handleClose = () => {
@@ -40,6 +43,27 @@ const App = () => {
     setItems((items) => [...items, item]);
   };
 
+  const handleFinalOrder = () => {
+    setFinal(false);
+
+    toast.success("Order Received!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+
+  const handleDelete = (it) => {
+    setItems(items.filter((item) => item.name !== it.name));
+    if (items.length === 1) {
+      setFinal(false);
+    }
+
+   ;
+  };
   return (
     <div>
       <Nav handleNav={handleNav} />
@@ -58,7 +82,14 @@ const App = () => {
         />
       )}
 
-      {final && <FinalOrder items={items} />}
+      {final && (
+        <FinalOrder
+          items={items}
+          handleFinalOrder={handleFinalOrder}
+          handleDelete={handleDelete}
+        />
+      )}
+      <ToastContainer />
     </div>
   );
 };

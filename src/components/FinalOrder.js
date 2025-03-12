@@ -1,30 +1,34 @@
 import { ShoppingCart } from "lucide-react";
 
-const FinalOrder = ({ items }) => {
+const FinalOrder = ({ items, handleFinalOrder, handleDelete }) => {
   console.log(items);
 
-  // const totalBilpl = items.map((item) => item.price + item)
+  const totalBill = items.reduce((sum, item) => sum + item.price, 0);
   return (
     <div className="final">
       <h1>Order Receieved</h1>
       {items.map((item) => (
         <div className="final-item">
+          <button onClick={() => handleDelete(item)}>X</button>
+
           <img src={item.image} alt="fruit" />
-          <div className="final-details">
+
+          <div className="final-price">
             <div>
               <h3> {item.name}</h3>
-              <p>{item.price}</p>
+              <p>${item.price}</p>
             </div>
+
             <button>X{item.count} </button>
           </div>
         </div>
       ))}
 
       <div className="total-bill">
-        <h3>Total Bill:</h3>
+        <h3>Total Bill: ${totalBill} </h3>
       </div>
       <div className="menu-button">
-        <button>
+        <button onClick={handleFinalOrder}>
           Place Order
           <span>
             <ShoppingCart />
